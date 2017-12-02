@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Clara Morgado portfolio">
+    <meta name="keywords" content="Paintings, Clara, Morgado, Art, Portfolio, Pinturas, Mimi, Pintura, Painting">
+    <meta name="author" content="Tomás Carvalho">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clara Morgado</title>
+    <link rel="stylesheet" href="../static/css/css.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a href ="/"><p class="chosen-font is-size-2" style="margin-left: 27px">Clara Morgado</p></a>
+      </div>
+    </nav>
+
+    <div class="tile is-ancester is-vertical" style="margin-top: 25px">
+    {% for paintings_row in paintings | batch(3) %}
+      <div class="tile is-parent">
+        {% for painting in paintings_row %}
+          <div class="tile is-parent">
+            <article class="tile is-child">
+              <figure class="image is-16by9">
+                <a href="{{ url_for('show_painting', id=painting.id) }}"><img src="{{ painting.image }}"/></a>
+              </figure>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    </div>
+  </body>
+</html>

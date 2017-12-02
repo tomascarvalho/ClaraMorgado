@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clara Morgado Admin</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+  <div align="center">
+      <form enctype="multipart/form-data" action="create_painting" method="post">
+          <label for="name">
+              <input type="text" name="name" id="name" placeholder="Nome" required/>
+          </label>
+          <label for="style">
+              <input type="text" name="style" id="style" placeholder="Estilo" required/>
+          </label>
+          <label for="date">
+              <input type="number" min="1993" max="2050" name="date" id="date" placeholder="Data" required/>
+          </label>
+          <label for="size">
+              <input type="text" name="size" id="size" placeholder="Tamanho" required/>
+          </label>
+          <labels for="file">
+              <input type="file" name="file" id="file"/>
+          </label>
+          <button type="submit" class="btn btn-primary">Submeter</button>
+      </form>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul class=flashes>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+  </div>
+</body>

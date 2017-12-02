@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Clara Morgado portfolio">
+    <meta name="keywords" content="Paintings, Clara, Morgado, Art, Portfolio, Pinturas, Mimi, Pintura, Painting">
+    <meta name="author" content="Tomás Carvalho">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clara Morgado</title>
+    <link rel="stylesheet" href="../static/css/css.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a href ="/"><p class="chosen-font is-size-2" style="margin-left: 27px">Clara Morgado</p></a>
+      </div>
+    </nav>
+
+    <div class="tile is-ancestor" style="margin-top: 25px">
+      <div class="tile is-vertical is-8">
+        <div class="tile is-parent">
+          <article class="tile is-child notification">
+            <article class="tile is-child">
+              <figure class="image">
+                <img src="{{ painting.image }}"/>
+              </figure>
+            </article>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification">
+          <div class="content">
+            <p class="title">{{ painting.name }}</p>
+            <p class="subtitle">With even more content</p>
+            <div class="content">
+              <p><strong>Técnica:</strong> {{ painting.style }}</p>
+              <p><strong>Data:</strong> {{ painting.date }}</p>
+              <p><strong>Tamanho:</strong> {{ painting.size }}</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>
