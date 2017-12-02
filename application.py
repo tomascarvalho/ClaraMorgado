@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, flash, url_for, redirect
 from flask_admin import Admin, BaseView, expose
 from models.models import Painting, Administrator
-from config.config import session, ADM_EMAIL, ADM_PW
+from config.config import session, ADM_EMAIL, ADM_PW, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 from flask_admin.contrib.sqla import ModelView
 import boto3
 import boto3.s3
