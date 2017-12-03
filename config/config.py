@@ -48,7 +48,7 @@ if 'EMAIL_FROM' in os.environ and 'EMAIL_PASSWORD' in os.environ:
 if 'APP_SECRET_KEY' in os.environ:
     APP_SECRET_KEY = os.environ['APP_SECRET_KEY']
 
-engine = create_engine('postgresql://'+DATABASES['default'].get('USER')+':'+ DATABASES['default'].get('PASSWORD') + '@'+DATABASES['default'].get('HOST')+':'+ DATABASES['default'].get('PORT') +'/'+ DATABASES['default'].get('NAME'))
+engine = create_engine('postgresql://'+DATABASES['default'].get('USER')+':'+ DATABASES['default'].get('PASSWORD') + '@'+ str(DATABASES['default'].get('HOST'))+':'+ str(DATABASES['default'].get('PORT')) +'/'+ DATABASES['default'].get('NAME'))
 
 
 Session = sessionmaker(bind=engine)
