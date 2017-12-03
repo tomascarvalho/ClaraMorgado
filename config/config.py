@@ -1,8 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from urllib.parse import urlparse, urljoin
 import psycopg2
 import os
+import urllib.parse
+
 
 
 if 'RDS_HOSTNAME' in os.environ:
@@ -17,8 +18,8 @@ if 'RDS_HOSTNAME' in os.environ:
     }
 
 elif 'DATABASE_URL' in os.environ:
-    urlparse.uses_netloc.append("postgres")
-    url = urlparse.urlparse(os.environ["DATABASE_URL"])
+    urllib.parse.uses_netloc.append("postgres")
+    url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
     DATABASES = {
         'default': {
             'NAME': url.path[1:],
