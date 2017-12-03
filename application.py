@@ -1,13 +1,13 @@
-from flask import Flask, request, render_template, flash, url_for, redirect
+import boto3
+import boto3.s3
+import sys
+import os
+from flask import Flask, request, render_template, flash, url_for, redirect, send_from_directory
 from flask_admin import Admin, BaseView, expose
 from models.models import Painting, Administrator
 from config.config import session, ADM_EMAIL, ADM_PW, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY\
     , EMAIL_FROM, EMAIL_PASSWORD, EMAIL_TO, APP_SECRET_KEY
 from flask_admin.contrib.sqla import ModelView
-import boto3
-import boto3.s3
-import sys
-import os
 from werkzeug.utils import secure_filename
 from boto3.s3.transfer import S3Transfer
 import random
@@ -234,6 +234,10 @@ def is_safe_url(target):
     return test_url.scheme in ('http', 'https') and \
            ref_url.netloc == test_url.netloc
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 if __name__ == '__main__':
