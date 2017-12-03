@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, flash, url_for, redirect
 from flask_admin import Admin, BaseView, expose
 from models.models import Painting, Administrator
 from config.config import session, ADM_EMAIL, ADM_PW, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY\
-    , EMAIL_FROM, EMAIL_PASSWORD, APP_SECRET_KEY
+    , EMAIL_FROM, EMAIL_PASSWORD, EMAIL_TO, APP_SECRET_KEY
 from flask_admin.contrib.sqla import ModelView
 import boto3
 import boto3.s3
@@ -204,7 +204,7 @@ def inquire():
     link = request.url_root[:-1] + url_for('show_painting', id = painting_id)
 
     try:
-        msg = Message('[Pedido de Informações] ClaraMorgado', recipients= [EMAIL_FROM])
+        msg = Message('[Pedido de Informações] ClaraMorgado', recipients= [EMAIL_TO])
         msg.html = '''Olá, recebeu uma nova mensagem do site <a href="{url}">Clara Morgado</a>
             sobre o seguinte <a href="{link}">quadro</a>.<br><br>
             De: {name} (<a href="mailto:{email}">{email}</a>)<br>
@@ -237,4 +237,4 @@ def is_safe_url(target):
 
 
 if __name__ == '__main__':
-    application.run(debug=True, host='0.0.0.0')
+    application.run(debug=False, host='0.0.0.0')
