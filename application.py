@@ -1,7 +1,8 @@
 from flask import Flask, request, render_template, flash, url_for, redirect
 from flask_admin import Admin, BaseView, expose
 from models.models import Painting, Administrator
-from config.config import session, ADM_EMAIL, ADM_PW, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, EMAIL_FROM, EMAIL_PASSWORD
+from config.config import session, ADM_EMAIL, ADM_PW, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY\
+    , EMAIL_FROM, EMAIL_PASSWORD, APP_SECRET_KEY
 from flask_admin.contrib.sqla import ModelView
 import boto3
 import boto3.s3
@@ -17,7 +18,7 @@ from flask_mail import Mail, Message
 UPLOAD_FOLDER = 'static/data/pics'
 application = Flask(__name__)
 application.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-application.secret_key = 'claramorgado'
+application.secret_key = APP_SECRET_KEY
 admin = Admin(application, name='Clara Morgado', template_mode='bootstrap3')
 # Set the max size of the file to 50MB
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])

@@ -60,6 +60,11 @@ else:
     EMAIL_FROM = 'your@email.here'
     EMAIL_PASSWORD = 'emailpasswordhere'
 
+if 'APP_SECRET_KEY' in os.environ:
+    APP_SECRET_KEY = os.environ['APP_SECRET_KEY']
+else:
+    APP_SECRET_KEY = 'your_secret_key'
+
 engine = create_engine('postgresql://'+user +':'+ password + '@'+ host +':'+ port +'/'+ database)
 
 
