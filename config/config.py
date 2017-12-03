@@ -42,7 +42,7 @@ if 'AWS_SECRET_ACCESS_KEY' in os.environ and 'AWS_ACCESS_KEY_ID' in os.environ:
 
 if 'EMAIL_FROM' in os.environ and 'EMAIL_PASSWORD' in os.environ:
     EMAIL_FROM = os.environ['EMAIL_FROM']
-    EMAIL_FROM = os.environ['EMAIL_PASSWORD']
+    EMAIL_PASSWORD = os.environ['EMAIL_PASSWORD']
 
 
 if 'APP_SECRET_KEY' in os.environ:
