@@ -236,9 +236,13 @@ def is_safe_url(target):
 
 @application.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
+    return send_from_directory(os.path.join(application.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+@application.route('/robots.txt')
+@application.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(os.path.join(application.root_path, 'static'), request.path[1:])
 
 if __name__ == '__main__':
     application.run(debug=False, host='0.0.0.0')
