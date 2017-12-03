@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from urllib import parse
+from urllib.parse import urlparse, urljoin
 import psycopg2
 import os
 
