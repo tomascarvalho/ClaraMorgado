@@ -22,7 +22,6 @@
     </nav>
 
     <div class="tile is-ancestor" style="margin-top: 25px">
-      <div class="tile is-vertical is-8">
         <div class="tile is-parent">
           <article class="tile is-child notification">
             <article class="tile is-child">
@@ -33,19 +32,59 @@
           </article>
         </div>
       </div>
-      <div class="tile is-parent">
-        <article class="tile is-child notification">
-          <div class="content">
-            <p class="title">{{ painting.name }}</p>
-            <p class="subtitle">With even more content</p>
-            <div class="content">
-              <p><strong>Técnica:</strong> {{ painting.style }}</p>
-              <p><strong>Data:</strong> {{ painting.date }}</p>
-              <p><strong>Tamanho:</strong> {{ painting.size }}</p>
-            </div>
-          </div>
-        </article>
+      <div>
+        <p class="description"><b>Estilo:</b>{{ painting.style }}</p>
+        <p class="description"><b>Tamanho:</b>{{ painting.size }}</p>
+        <p class="description"><b>Ano:</b>{{ painting.date }}</p>
+        <p class="description"><b><a id="show_form">Inquirir</a> | <a href="/">Voltar</a></b></p>
       </div>
-    </div>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+          {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="inner contact">
+        <!-- Form Area -->
+        <div class="contact-form">
+            <!-- Form -->
+            <form id="contact-us" method="post" action="inquire">
+                <!-- Left Inputs -->
+                <input type="hidden" name="painting_id" value="{{ painting.id }}" />
+                <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+                    <!-- Name -->
+                    <input type="text" name="name" id="name" required="required" class="form" placeholder="Nome" />
+                    <!-- Email -->
+                    <input type="email" name="email" id="mail" required="required" class="form" placeholder="O seu e-mail" />
+                    <!-- Subject -->
+                    <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Assunto" />
+                </div><!-- End Left Inputs -->
+                <!-- Right Inputs -->
+                <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
+                    <!-- Message -->
+                    <textarea name="message" id="message" class="form textarea"  placeholder="Mensagem"></textarea>
+                </div><!-- End Right Inputs -->
+                <!-- Bottom Submit -->
+                <div class="relative fullwidth col-xs-12">
+                    <!-- Send Button -->
+                    <button type="submit" id="submit" name="submit" class="form-btn semibold">Enviar</button>
+                </div><!-- End Bottom Submit -->
+                <!-- Clear -->
+                <div class="clear"></div>
+            </form>
+
+        </div><!-- End Contact Form Area -->
+    </div><!-- End Inner -->
+
   </body>
+  <script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+  <script>
+    $("#contact-us").hide();
+    $("#show_form").click (function(){
+      $("#contact-us").show();
+    });
+  </script>
 </html>

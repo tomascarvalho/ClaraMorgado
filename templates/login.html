@@ -1,15 +1,29 @@
 <!DOCTYPE html>
+<html class="has-navbar-fixed-top">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Clara Morgado portfolio">
+  <meta name="keywords" content="Paintings, Clara, Morgado, Art, Portfolio, Pinturas, Mimi, Pintura, Painting">
+  <meta name="author" content="Tomás Carvalho">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Clara Morgado Admin</title>
-  <!-- Bootstrap -->
+  <title>Clara Morgado</title>
+  <link rel="stylesheet" href="../static/css/css.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 
 <body>
-  <div align="center">
+
+  <nav class="navbar is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a href ="/admin"><p class="chosen-font is-size-2" style="margin-left: 27px">Clara Morgado</p></a>
+    </div>
+  </nav>
+
+
+  <div align="center" style="margin-top: 50px">
       <form action="login" method="post">
           <label for="email">Email</label>
           <input type="email" name="email" id="email" placeholder=Email required/>
@@ -19,12 +33,13 @@
       </form>
       {% with messages = get_flashed_messages() %}
       {% if messages %}
-      <ul class=flashes>
           {% for message in messages %}
-          <li>{{ message }}</li>
+            <div class="alert alert-primary" role="alert">
+              {{ message }}
+            </div>
           {% endfor %}
-      </ul>
       {% endif %}
       {% endwith %}
   </div>
+
 </body>

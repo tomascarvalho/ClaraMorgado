@@ -24,9 +24,9 @@ elif 'DATABASE_URL' in os.environ:
 
 # Use this only in development
 else:
-    database = 'ClaraMorgado'
-    user = 'postgres'
-    password = 'postgres'
+    database = 'dbname'
+    user = 'dbuser'
+    password = 'dbpassword'
     host = 'localhost'
     port = '5433'
 
@@ -42,12 +42,23 @@ if 'ADM_PW' in os.environ and 'ADM_EMAIL' in os.environ:
     ADM_EMAIL = os.environ['ADM_EMAIL']
 
 else:
-    ADM_EMAIL = 'admin@admin.com'
+    ADM_EMAIL = 'admin@email.com'
     ADM_PW = 'adminpassword'
 
 if 'AWS_SECRET_ACCESS_KEY' in os.environ and 'AWS_ACCESS_KEY_ID' in os.environ:
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+
+else:
+    AWS_ACCESS_KEY_ID = 'your_access_key'
+    AWS_SECRET_ACCESS_KEY = 'your_secret_key'
+
+if 'EMAIL_FROM' in os.environ and 'EMAIL_PASSWORD' in os.environ:
+    EMAIL_FROM = os.environ['EMAIL_FROM']
+    EMAIL_FROM = os.environ['EMAIL_PASSWORD']
+else:
+    EMAIL_FROM = 'your@email.here'
+    EMAIL_PASSWORD = 'emailpasswordhere'
 
 engine = create_engine('postgresql://'+user +':'+ password + '@'+ host +':'+ port +'/'+ database)
 
