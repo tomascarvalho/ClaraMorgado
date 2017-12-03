@@ -4,30 +4,31 @@ from urllib import parse
 import psycopg2
 import os
 
-# If using AWS
-if 'RDS_HOSTNAME' in os.environ:
-    database = os.environ['RDS_DB_NAME']
-    user = os.environ['RDS_USERNAME']
-    password = os.environ['RDS_PASSWORD']
-    host = os.environ['RDS_HOSTNAME']
-    port = os.environ['RDS_PORT']
 
-# If using heroku
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    }
+
 elif 'DATABASE_URL' in os.environ:
-    parse.uses_netloc.append("postgres")
-    url = parse.urlparse(os.environ["DATABASE_URL"])
-    database=url.path[1:],
-    user=url.username,
-    password=url.password,
-    host=url.hostname,
-    port=url.port
+    urlparse.uses_netloc.append("postgres")
+    url = urlparse.urlparse(os.environ["DATABASE_URL"])
+    DATABASES = {
+        'default': {
+            'NAME': url.path[1:],
+            'USER': url.username,
+            'PASSWORD': url.password,
+            'HOST': url.hostname,
+            'PORT': url.port,
+        }
+    }
 
-if 'RDS_HOSTNAME' in os.environ:
-    database = os.environ['RDS_DB_NAME']
-    user = os.environ['RDS_USERNAME']
-    password = os.environ['RDS_PASSWORD']
-    host = os.environ['RDS_HOSTNAME']
-    port = os.environ['RDS_PORT']
 
 if 'ADM_PW' in os.environ and 'ADM_EMAIL' in os.environ:
     ADM_PW = os.environ['ADM_PW']
@@ -46,7 +47,7 @@ if 'EMAIL_FROM' in os.environ and 'EMAIL_PASSWORD' in os.environ:
 if 'APP_SECRET_KEY' in os.environ:
     APP_SECRET_KEY = os.environ['APP_SECRET_KEY']
 
-engine = create_engine('postgresql://'+user +':'+ password + '@'+ host +':'+ port +'/'+ database)
+engine = create_engine('postgresql://'+DATABASES['default'].get('USER')+':'+ DATABASES['default'].get('PASSWORD') + '@'+DATABASES['default'].get('HOST')+':'+ DATABASES['default'].get('PORT') +'/'+ DATABASES['default'].get('NAME'))
 
 
 Session = sessionmaker(bind=engine)
