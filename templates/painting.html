@@ -47,7 +47,7 @@
           {% endfor %}
       {% endif %}
       {% endwith %}
-      <div class="inner contact">
+      <div class="inner contact description">
         <!-- Form Area -->
         <div class="contact-form">
             <!-- Form -->
@@ -84,7 +84,11 @@
   <script>
     $("#contact-us").hide();
     $("#show_form").click (function(){
-      $("#contact-us").show();
+      if ($("#contact-us").is(":visible")) {
+        $("#contact-us").hide();
+      } else {
+        $("#contact-us").show();
+      }
     });
   </script>
 </html>
