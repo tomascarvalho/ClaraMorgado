@@ -14,6 +14,7 @@ import random
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 from urllib.parse import urlparse, urljoin
 from flask_mail import Mail, Message
+from sqlalchemy import desc
 
 UPLOAD_FOLDER = 'static/data/pics'
 application = Flask(__name__)
@@ -127,7 +128,7 @@ def load_user(user_id):
 
 @application.route('/')
 def index():
-    paintings = session.query(Painting).order_by(Painting.date)
+    paintings = session.query(Painting).order_by(desc(Painting.date))
     count = (paintings.count()//3)
     return render_template("index.html", paintings = paintings, count = count)
 
@@ -138,6 +139,7 @@ def create_painting():
     style = request.form.get('style')
     date = request.form.get('date')
     size = request.form.get('size')
+    observations = request.form.get('observations')
 
     if name is None or style is None or date is None:
         # HANDLE ERROR HERE
@@ -175,7 +177,7 @@ def create_painting():
         file = None
 
     try:
-        new_painting = Painting(name = name, style = style, size = size, date = date, image = file_url)
+        new_painting = Painting(name = name, style = style, size = size, date = date, observations = observations, image = file_url)
         session.add(new_painting)
         session.commit()
     except Exception as e:

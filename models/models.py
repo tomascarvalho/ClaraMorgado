@@ -15,6 +15,7 @@ class Painting(Base):
     price = Column(Integer)
     date = Column(Integer)
     size = Column(String(128))
+    observations = Column(String(512))
     image = Column(Text)
 
     def __repr__(self):

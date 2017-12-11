@@ -37,6 +37,9 @@
         <p class="description"><b>Estilo:</b>{{ painting.style }}</p>
         <p class="description"><b>Tamanho:</b>{{ painting.size }}</p>
         <p class="description"><b>Ano:</b>{{ painting.date }}</p>
+        {% if painting.observations is defined %}
+          <p class="description"><b>Observações:</b>{{ painting.observations }}</p>
+        {% endif %}
         <p class="description"><b><a id="show_form">Inquirir</a> | <a href="/">Voltar</a></b></p>
       </div>
       {% with messages = get_flashed_messages() %}
