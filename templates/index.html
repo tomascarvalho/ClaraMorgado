@@ -24,7 +24,7 @@
     </nav>
 
     <div class="tile is-ancester is-vertical is-12" style="margin-top: 25px">
-    {% for paintings_row in paintings | batch(5) %}
+    {% for paintings_row in paintings | batch(3) %}
       <div class="tile is-parent">
         {% for painting in paintings_row %}
           <div class="tile is-parent">
