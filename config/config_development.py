@@ -23,6 +23,9 @@ AWS_SECRET_ACCESS_KEY = 'your_secret_key'
 EMAIL_FROM = 'your@email.here'
 EMAIL_PASSWORD = 'emailpasswordhere'
 
+#Recipient of sent emails
+EMAIL_TO = 'receiver@email.here'
+
 #The app secret key
 APP_SECRET_KEY = 'your_secret_key'
 
