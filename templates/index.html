@@ -15,7 +15,7 @@
     <meta name="google-site-verification" content="TVq5U_h3s-odOGzLNmytl71R-Qej9jKS4iGC54EIMRk" />
   </head>
 
-  <body>
+  <body onload="showContent()">
 
     <nav class="navbar is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
@@ -23,7 +23,10 @@
       </div>
     </nav>
 
-    <div class="tile is-ancester is-vertical is-12" style="margin-top: 25px">
+    <div id="loader"></div>
+    <div id="loader-text">A carregar conteúdo<br>Por favor aguarde</div>
+
+    <div id="content" class="tile is-ancester is-vertical is-12 animate-bottom" style="margin-top: 25px">
     {% for paintings_row in paintings | batch(3) %}
       <div class="tile is-parent">
         {% for painting in paintings_row %}
@@ -38,5 +41,13 @@
       </div>
     {% endfor %}
     </div>
+
+  <script>
+    function showContent() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("loader-text").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    }
+  </script>
   </body>
 </html>
