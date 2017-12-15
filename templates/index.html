@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="description" content="Clara Morgado portfolio">
-    <meta name="keywords" content="Paintings, Clara, Morgado, Art, Portfolio, Pinturas, Mimi, Pintura, Painting">
+    <meta name="keywords" content="Paintings, Clara, Morgado, Art, Portfolio, Pinturas, Mimi, Pintura, Painting, pinturas, painting, mimi, clara, oliveira, coimbra, Coimbra, arte, artista, portfólio, portfolio, Portfolio, Arte, art, Art, quadros">
     <meta name="author" content="Tomás Carvalho">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Clara Morgado</title>
+    <title>Clara Morgado - Porfólio de Quadros</title>
     <link rel="stylesheet" href="../static/css/css.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
@@ -15,7 +15,7 @@
     <meta name="google-site-verification" content="TVq5U_h3s-odOGzLNmytl71R-Qej9jKS4iGC54EIMRk" />
   </head>
 
-  <body onload="showContent()">
+  <body>
 
     <nav class="navbar is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
@@ -23,10 +23,10 @@
       </div>
     </nav>
 
-    <div id="loader"></div>
-    <div id="loader-text">A carregar conteúdo<br>Por favor aguarde</div>
+    <!-- <div id="loader"></div>
+    <div id="loader-text">A carregar conteúdo<br>Por favor aguarde</div> -->
 
-    <div id="content" class="tile is-ancester is-vertical is-12 animate-bottom" style="margin-top: 25px">
+    <div class="tile is-ancester is-vertical is-12 animate-bottom" style="margin-top: 25px">
     {% for paintings_row in paintings | batch(3) %}
       <div class="tile is-parent">
         {% for painting in paintings_row %}
@@ -42,12 +42,12 @@
     {% endfor %}
     </div>
 
-  <script>
+  <!-- <script>
     function showContent() {
       document.getElementById("loader").style.display = "none";
       document.getElementById("loader-text").style.display = "none";
       document.getElementById("content").style.display = "block";
     }
-  </script>
+  </script> -->
   </body>
 </html>
