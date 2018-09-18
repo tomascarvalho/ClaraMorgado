@@ -5,9 +5,9 @@ import psycopg2
 import os
 
 #Database config
-database = 'dbname'
-user = 'dbuser'
-password = 'dbpassword'
+database = 'ClaraMorgado'
+user = 'postgres'
+password = 'postgres'
 host = 'localhost'
 port = '5433'
 
